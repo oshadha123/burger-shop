@@ -29,7 +29,6 @@ const Add = ({ setClose }) => {
     const data = new FormData();
     data.append("file", file);
     data.append("upload_preset", "uploads");
-    data.append('api_key', "261462124587196");
     try {
       const uploadRes = await axios.post(
         "https://api.cloudinary.com/v1_1/dapedc6fc/image/upload",
