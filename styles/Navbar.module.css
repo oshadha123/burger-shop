@@ -63,6 +63,8 @@
 
 .cart{
     position: relative;
+    cursor: pointer;
+
 }
 
 .counter{
@@ -79,6 +81,7 @@
     justify-content: center;
     font-weight: bold;
     color: #d1411e;
+    cursor: pointer;
 }
 
 @media screen and (max-width:480px) {

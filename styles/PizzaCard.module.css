@@ -9,6 +9,12 @@
   cursor: pointer;
 }
 
+.container:hover{
+  transition: 0.4s all ease-in-out;
+  transform: scale(1.15);
+
+}
+
 .title {
   font-size: 18px;
   font-weight: bold;
