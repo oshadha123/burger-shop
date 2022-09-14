@@ -2,10 +2,15 @@ import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
 import styles from "../../styles/Admin.module.css";
+import Update from "../../components/Update";
 
 const Index = ({ orders, products }) => {
   const [pizzaList, setPizzaList] = useState(products);
   const [orderList, setOrderList] = useState(orders);
+  const [close, setClose] = useState(true);
+  const [data, setData] = useState(null);
+  const [state, setState] = useState(false);
+
   const status = ["preparing", "on the way", "delivered"];
 
   const handleDelete = async (id) => {
@@ -35,6 +40,18 @@ const Index = ({ orders, products }) => {
     } catch (err) {
       console.log(err);
     }
+  };
+  const handleUpdate = async (p_id) => {
+     console.log(p_id);
+      await axios.get("http://localhost:3000/api/products/"+p_id)
+      .then(response =>{
+        console.log(response);
+        setData(response)
+        setState(true);
+        // {<Update setData={response} />}
+   
+      })
+
   };
 
   return (
@@ -67,7 +84,9 @@ const Index = ({ orders, products }) => {
                 <td>{product.title}</td>
                 <td>Rs. {product.prices[0]}</td>
                 <td>
-                  <button className={styles.button}>Edit</button>
+                  <button className={styles.button}
+                  onClick={(p_id)=>{setClose(false);handleUpdate(product._id)}}
+                  >Edit</button>
                   <button
                     className={styles.button}
                     onClick={() => handleDelete(product._id)}
@@ -113,6 +132,7 @@ const Index = ({ orders, products }) => {
           ))}
         </table>
       </div>
+      {state ? (!close && <Update setClose={setClose} setData={data}/>):''}
     </div>
   );
 };

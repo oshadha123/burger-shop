@@ -6,9 +6,7 @@ const PizzaList = ({ pizzaList }) => {
     <div className={styles.container}>
       <h1 className={styles.title}>THE BEST BURGER IN TOWN</h1>
       <p className={styles.desc}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut blandit arcu
-        in pretium molestie. Interdum et malesuada fames acme. Lorem ipsum dolor
-        sit amet, consectetur adipiscing elit.
+        Try out our the best burgers in your city..!   Made with fresh ingredients and with differnt taste..!
       </p>
       <div className={styles.wrapper}>
         {pizzaList.map((pizza) => (
